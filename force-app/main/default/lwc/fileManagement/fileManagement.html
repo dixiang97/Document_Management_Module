@@ -1,0 +1,48 @@
+<template>
+  <article class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+            <p
+              class="slds-card__header-link slds-truncate slds-p-horizontal_small"
+            >
+              <span>Selected File: {selectedFileTitle}</span>
+            </p>
+          </h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card__body slds-card__body_inner">
+      <lightning-accordion
+        allow-multiple-sections-open
+        active-section-name={activeSections}
+      >
+        <lightning-accordion-section name="Files" label="Files">
+          <c-file-preview-list
+            record-id={recordId}
+            onfileselect={handleFileSelect}
+            onrefresh={handleFileRefresh}
+          >
+          </c-file-preview-list>
+        </lightning-accordion-section>
+        <!--Display ONLY AFTER file is selected-->
+        <template if:true={selectedContentVersionId}>
+          <lightning-accordion-section name="Tags" label="Tags">
+            <template for:each={tags} for:item="tag">
+              <span
+                key={tag.Id}
+                class="tag slds-badge slds-m-around_xx-small"
+                onclick={handleTagClick}
+                >{tag.Name}</span
+              >
+            </template>
+          </lightning-accordion-section>
+          <lightning-accordion-section name="Status" label="Status">
+            <p>Search for Status</p>
+          </lightning-accordion-section>
+        </template>
+      </lightning-accordion>
+    </div>
+  </article>
+</template>

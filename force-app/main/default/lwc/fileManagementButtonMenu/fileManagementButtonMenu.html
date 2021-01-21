@@ -1,0 +1,40 @@
+<template>
+  <div class="slds-card">
+    <lightning-layout horizontal-align="space" multiple-rows>
+      <lightning-layout-item padding="around-small">
+        <lightning-button
+          label="Enrollment"
+          class="slds-m-left_x-small"
+          variant="brand"
+          icon-name="utility:edit_form"
+          onclick={fetchFiles}
+        ></lightning-button>
+      </lightning-layout-item>
+      <lightning-layout-item padding="around-small">
+        <lightning-button
+          label="Link"
+          class="slds-m-left_x-small"
+          variant="brand"
+          icon-name="utility:link"
+          onclick={handleLinkButton}
+        ></lightning-button>
+      </lightning-layout-item>
+      <lightning-layout-item padding="around-small">
+        <lightning-button
+          label="TBD"
+          class="slds-m-left_x-small"
+          variant="brand"
+          icon-name="utility:download"
+          onclick={fetchFiles}
+        ></lightning-button>
+      </lightning-layout-item>
+    </lightning-layout>
+  </div>
+  <!-- File Link Modal-->
+  <template if:true={displayFileLinkModal}>
+    <c-file-link-modal
+      content-document-id={selectedContentDocumentId}
+      onclose={handleFileLinkModalClose}
+    ></c-file-link-modal>
+  </template>
+</template>

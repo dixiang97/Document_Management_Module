@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lightning Message Channel for File Preview Components</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>This is ContentDocumentId of file that being selected</description>
+        <fieldName>contentDocumentId</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>This is contentVersionId of file that being selected</description>
+        <fieldName>contentVersionId</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>This is type of file that being selected</description>
+        <fieldName>fileType</fieldName>
+    </lightningMessageFields>
+    <masterLabel>FilePreviewMessageChannel</masterLabel>
+</LightningMessageChannel>

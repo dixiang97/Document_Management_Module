@@ -1,0 +1,45 @@
+<template>
+  <article class="slds-card">
+    <div class="slds-card__body slds-card__body_inner">
+      <template if:true={contentVersionId}>
+        <!-- Unsupported File -->
+        <template if:true={isUnsupportedType}>
+          <p class="slds-text-align_center">
+            Preview is not supported for this file.
+          </p>
+        </template>
+        <!-- Pop Out Window ONLY AVAILABLE for pdf, image, mp3-->
+        <template if:true={displayPopOut}>
+          <div class="slds-is-relative">
+            <div class="popOutIcon" onclick={handlePopOutClick}>
+              <lightning-icon
+                icon-name="utility:new_window"
+                alternative-text="Pop Out"
+                title="Pop Out"
+                size="x-small"
+                variant="inverse"
+              >
+              </lightning-icon>
+            </div>
+            <!-- MP3 File-->
+            <template if:true={isMP3}>
+              <iframe src={url}></iframe>
+            </template>
+            <!-- Image File -->
+            <template if:true={isImage}>
+              <image src={url}></image>
+            </template>
+            <!-- PDF File -->
+            <template if:true={isPdf}>
+              <iframe src={url}></iframe>
+            </template>
+          </div>
+        </template>
+      </template>
+      <!-- No file is selected-->
+      <template if:false={contentVersionId}>
+        <p class="slds-text-align_center">No file is selected for preview</p>
+      </template>
+    </div>
+  </article>
+</template>

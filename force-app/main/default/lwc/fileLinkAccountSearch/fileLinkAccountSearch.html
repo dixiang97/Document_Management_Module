@@ -1,0 +1,68 @@
+<template>
+  <fieldset class="slds-form-element slds-form-element_compound">
+    <div class="slds-form-element__control">
+      <div class="slds-form-element__row">
+        <div class="slds-size_8-of-12">
+          <div onkeyup={handleKeyUp}>
+            <lightning-input
+              data-name="account-name-search"
+              label="Account Name"
+              type="search"
+              required
+              message-when-value-missing="Please enter account name"
+              onchange={handleInputChange}
+            ></lightning-input>
+          </div>
+        </div>
+        <div class="slds-size_2-of-12">
+          <lightning-combobox
+            name="type"
+            label="Type"
+            value={value}
+            placeholder="-All-"
+            options={options}
+            onchange={handleChange}
+          ></lightning-combobox>
+        </div>
+        <div class="slds-size_2-of-12">
+          <div class="slds-form-element">
+            <label class="slds-form-element__label"> </label>
+            <div class="slds-form-element__control">
+              <lightning-button
+                label="Search"
+                title="Search"
+                variant="brand"
+                onclick={handleSearchAccount}
+              ></lightning-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <template if:true={isAccountsExist}>
+    <div class="slds-p-vertical_medium slds-is-relative">
+      <!-- Spinner -->
+      <template if:true={isLoading}>
+        <lightning-spinner
+          title="Loading"
+          alternative-text="Loading"
+        ></lightning-spinner>
+      </template>
+      <lightning-datatable
+        key-field="Id"
+        data={accounts}
+        columns={columns}
+        column-widths-mode="auto"
+        max-row-selection="1"
+        onrowselection={handleRowSelection}
+      >
+      </lightning-datatable>
+    </div>
+  </template>
+  <!-- No Search Result Message-->
+  <template if:true={displayNoSearchResult}>
+    <p class="slds-text-color_error">{noSearchResultMsg}</p>
+  </template>
+</template>

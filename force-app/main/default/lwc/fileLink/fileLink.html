@@ -1,0 +1,39 @@
+<template>
+  <div class="slds-is-relative">
+    <!-- Spinner -->
+    <template if:true={isLoading}>
+      <lightning-spinner
+        title="Loading"
+        alternative-text="Loading"
+      ></lightning-spinner>
+    </template>
+    <!-- Accordion -->
+    <lightning-accordion
+      allow-multiple-sections-open
+      active-section-name={activeSections}
+    >
+      <template if:true={accounts}>
+        <lightning-accordion-section name="Accounts" label="Account">
+          <lightning-datatable
+            key-field="Id"
+            data={accounts}
+            columns={accountColumns}
+            column-widths-mode="auto"
+            onrowselection={handleRowSelection}
+          ></lightning-datatable>
+        </lightning-accordion-section>
+      </template>
+      <template if:true={cases}>
+        <lightning-accordion-section name="Cases" label="Cases">
+          <lightning-datatable
+            key-field="Id"
+            data={cases}
+            columns={caseColumns}
+            column-widths-mode="auto"
+            onrowselection={handleRowSelection}
+          ></lightning-datatable>
+        </lightning-accordion-section>
+      </template>
+    </lightning-accordion>
+  </div>
+</template>

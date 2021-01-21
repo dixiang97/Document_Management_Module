@@ -1,0 +1,57 @@
+<template>
+  <article class="slds-card">
+    <div class="slds-card__header slds-grid card-header">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <lightning-icon
+            icon-name="action:add_file"
+            alternative-text="files"
+            size="x-small"
+            title="files"
+            variant="success"
+          >
+          </lightning-icon>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+            <span class="slds-card__header-link slds-truncate">Files</span>
+          </h2>
+        </div>
+        <div class="slds-no-flex">
+          <!-- Display Manage Files button-->
+          <template if:true={displayManageButton}>
+            <lightning-button
+              label="Manage Files"
+              class="slds-m-left_x-small"
+              onclick={goToFileManagementPage}
+            ></lightning-button>
+          </template>
+          <lightning-button-icon
+            icon-name="utility:refresh"
+            size="medium"
+            variant="border-filled"
+            alternative-text="Refresh file list"
+            onclick={fetchFiles}
+            class="slds-m-left_x-small"
+          ></lightning-button-icon>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card__body slds-is-relative">
+      <template if:true={displaySpinner}>
+        <lightning-spinner
+          alternative-text="Loading"
+          size="medium"
+        ></lightning-spinner>
+      </template>
+      <lightning-datatable
+        key-field="Id"
+        data={files}
+        columns={columns}
+        column-widths-mode="auto"
+        max-row-selection="1"
+        onrowselection={handleRowSelection}
+      ></lightning-datatable>
+    </div>
+  </article>
+</template>

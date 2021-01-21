@@ -1,0 +1,19 @@
+.popOutIcon {
+  position: absolute;
+  right: -8px;
+  top: -10px;
+  background-color: #0070d2;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
+  height: 30px;
+  width: 30px;
+  padding-left: 6px;
+  padding-top: 3px;
+  cursor: pointer;
+}
+
+iframe {
+  border: 0;
+  width: 100%;
+  height: calc(100vh - 180px);
+}
