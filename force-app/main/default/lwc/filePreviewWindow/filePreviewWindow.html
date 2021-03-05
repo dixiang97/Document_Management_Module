@@ -5,6 +5,14 @@
         <!-- Unsupported File -->
         <template if:true={isUnsupportedType}>
           <p class="slds-text-align_center">
+            <lightning-icon
+              icon-name="utility:warning"
+              variant="warning"
+              alternative-text="Warning!"
+              title="Warning"
+              size="x-small"
+              class="slds-m-horizontal_small"
+            ></lightning-icon>
             Preview is not supported for this file.
           </p>
         </template>
@@ -38,7 +46,17 @@
       </template>
       <!-- No file is selected-->
       <template if:false={contentVersionId}>
-        <p class="slds-text-align_center">No file is selected for preview</p>
+        <p class="slds-text-align_center">
+          <lightning-icon
+            icon-name="utility:info_alt"
+            variant="warning"
+            alternative-text="Warning!"
+            title="Warning"
+            size="x-small"
+            class="slds-m-horizontal_small"
+          ></lightning-icon
+          >No file is selected for preview
+        </p>
       </template>
     </div>
   </article>

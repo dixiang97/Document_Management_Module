@@ -50,7 +50,7 @@ export default class FilePreviewList extends NavigationMixin(LightningElement) {
         this.displaySpinner = false;
         // Reset the table selection
         this.template.querySelector("lightning-datatable").selectedRows = [];
-        // Publish selected file info on message channel
+        // Publish empty selected file info on message channel
         publish(this.messageContext, FilePreviewMessageChannel, {});
       });
     this.dispatchEvent(new CustomEvent("refresh"));
@@ -81,8 +81,8 @@ export default class FilePreviewList extends NavigationMixin(LightningElement) {
     this.dispatchEvent(fileSelectEvent);
   }
 
+  // Navigate to the File_Management app page
   goToFileManagementPage() {
-    // Navigate to the File_Management app page
     this[NavigationMixin.Navigate]({
       type: "standard__navItemPage",
       attributes: {

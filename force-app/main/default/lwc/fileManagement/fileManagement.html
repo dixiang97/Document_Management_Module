@@ -29,14 +29,7 @@
         <!--Display ONLY AFTER file is selected-->
         <template if:true={selectedContentVersionId}>
           <lightning-accordion-section name="Tags" label="Tags">
-            <template for:each={tags} for:item="tag">
-              <span
-                key={tag.Id}
-                class="tag slds-badge slds-m-around_xx-small"
-                onclick={handleTagClick}
-                >{tag.Name}</span
-              >
-            </template>
+            <c-file-tags></c-file-tags>
           </lightning-accordion-section>
           <lightning-accordion-section name="Status" label="Status">
             <p>Search for Status</p>

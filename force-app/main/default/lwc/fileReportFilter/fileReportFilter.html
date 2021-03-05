@@ -1,0 +1,50 @@
+<template>
+  <lightning-accordion
+    allow-multiple-sections-open
+    onsectiontoggle={handleToggleSection}
+    active-section-name={outerActiveSectionName}
+    title="Filters"
+    data-name="outerAccordion"
+  >
+    <lightning-accordion-section name="Filters" label="Filters">
+      <template if:true={isFiltersAccordionActive}>
+        <lightning-button
+          slot="actions"
+          label="Save"
+          variant="brand"
+          onclick={handleSave}
+          icon-position="right"
+        ></lightning-button>
+      </template>
+
+      <!-- Inner Accordion for different filter-->
+      <lightning-accordion
+        allow-multiple-sections-open
+        onsectiontoggle={handleToggleSection}
+        active-section-name={innerActiveSectionName}
+        data-name="innerAccordion"
+      >
+        <lightning-accordion-section name="Type" label="Type">
+          <lightning-checkbox-group
+            options={typeFilterOptions}
+            value={typeFilterValues}
+            onchange={handleFilterValueChange}
+            data-name="typeFilter"
+          ></lightning-checkbox-group>
+        </lightning-accordion-section>
+        <lightning-accordion-section
+          name="Related Object"
+          label={relatedObjectAccordionLabel}
+        >
+          <lightning-combobox
+            value={relatedObjectFilterValue}
+            placeholder="Select Related Object"
+            options={relatedObjectFilterOptions}
+            onchange={handleFilterValueChange}
+            data-name="relatedObjectFilter"
+          ></lightning-combobox>
+        </lightning-accordion-section>
+      </lightning-accordion>
+    </lightning-accordion-section>
+  </lightning-accordion>
+</template>

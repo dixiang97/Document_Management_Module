@@ -1,0 +1,19 @@
+<template>
+  <div class="slds-is-relative">
+    <!-- Spinner -->
+    <template if:true={isLoading}>
+      <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <!-- Tags -->
+    {doc}
+    <template for:each={tagPicklists} for:item="tag">
+      <span
+        key={tag.id}
+        class={tag.cssClass}
+        data-value={tag.value}
+        onclick={handleTagClick}
+        >{tag.label}
+      </span>
+    </template>
+  </div>
+</template>

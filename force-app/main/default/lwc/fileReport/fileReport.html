@@ -1,0 +1,51 @@
+<template>
+  <div class="slds-is-relative">
+    <template if:true={showSpinner}>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="large"
+      ></lightning-spinner>
+    </template>
+    <c-file-report-filter
+      onfilterchange={handleFilterChange}
+      onfilteropen={handleFilterOpen}
+      onfilterclose={handleFilterClose}
+    ></c-file-report-filter>
+    <template if:true={showTable}>
+      <c-table-pagination
+        current-page={currentPage}
+        total-page={totalPage}
+        onnext={handleNext}
+        onprevious={handlePrevious}
+        is-first-page={isFirstPage}
+        is-last-page={isLastPage}
+      ></c-table-pagination>
+      <div class="slds-m-vertical_medium">
+        <lightning-datatable
+          key-field="contentDocumentLinkId"
+          columns={columns}
+          data={data}
+          hide-checkbox-column
+          default-sort-direction={defaultSortDirection}
+          sorted-direction={sortDirection}
+          sorted-by={sortedBy}
+          onsort={onHandleSort}
+        >
+        </lightning-datatable>
+      </div>
+      <c-table-pagination
+        current-page={currentPage}
+        total-page={totalPage}
+        onnext={handleNext}
+        onprevious={handlePrevious}
+        is-first-page={isFirstPage}
+        is-last-page={isLastPage}
+      ></c-table-pagination>
+    </template>
+    <template if:false={hasData}>
+      <p class="slds-text-heading_small slds-align_absolute-center">
+        No record is found.
+      </p>
+    </template>
+  </div>
+</template>
